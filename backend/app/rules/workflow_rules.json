@@ -1,0 +1,180 @@
+{
+  "routes": {
+    "Only Scrutiny": {
+      "description": "Standard route for applications requiring only document scrutiny and committee appraisal without inspection",
+      "initial_stage": "Preliminary Scrutiny",
+      "stages": {
+        "Preliminary Scrutiny": {
+          "allowed_roles": ["Regional Officer"],
+          "sla_days": 7,
+          "next_stage": "Scrutiny Committee Review",
+          "can_revert_to": "Re-Scrutiny",
+          "description": "Initial scrutiny of statutory documents and application completeness by Regional Officer",
+          "template": "Preliminary Scrutiny completed for application {application_no}. Case advanced to Scrutiny Committee Review."
+        },
+        "Re-Scrutiny": {
+          "allowed_roles": ["Regional Officer"],
+          "sla_days": 5,
+          "next_stage": "Scrutiny Committee Review",
+          "can_revert_to": null,
+          "description": "Re-scrutiny of compliance documents submitted after reversion",
+          "template": "Re-Scrutiny completed for application {application_no}. Forwarded back to Scrutiny Committee Review."
+        },
+        "Scrutiny Committee Review": {
+          "allowed_roles": ["Regional Officer", "Bureau Officer"],
+          "sla_days": 7,
+          "next_stage": "Final Approval",
+          "can_revert_to": "Re-Scrutiny",
+          "description": "Formal appraisal of application by the Regional Scrutiny Committee",
+          "template": "Scrutiny Committee has appraised application {application_no} and recommended for Final Approval."
+        },
+        "Final Approval": {
+          "allowed_roles": ["Bureau Officer", "Admin"],
+          "sla_days": 5,
+          "next_stage": null,
+          "can_revert_to": "Re-Scrutiny",
+          "description": "Final statutory decision and Letter of Approval (LoA) issuance by Competent Authority",
+          "template": "Final approval granted for application {application_no}. Approval order issued."
+        }
+      }
+    },
+    "Scrutiny+EVC": {
+      "description": "Comprehensive route for new programs or expansions requiring scrutiny followed by Expert Visit Committee inspection",
+      "initial_stage": "Preliminary Scrutiny",
+      "stages": {
+        "Preliminary Scrutiny": {
+          "allowed_roles": ["Regional Officer"],
+          "sla_days": 7,
+          "next_stage": "EVC Queue",
+          "can_revert_to": "Re-Scrutiny",
+          "description": "Preliminary document verification prior to EVC inspection queuing",
+          "template": "Preliminary scrutiny passed. Application {application_no} queued for Expert Visit Committee (EVC) scheduling."
+        },
+        "Re-Scrutiny": {
+          "allowed_roles": ["Regional Officer"],
+          "sla_days": 5,
+          "next_stage": "EVC Queue",
+          "can_revert_to": null,
+          "description": "Review of corrected documents before re-entering EVC queue",
+          "template": "Deficiencies rectified in Re-Scrutiny for application {application_no}. Forwarded to EVC Queue."
+        },
+        "EVC Queue": {
+          "allowed_roles": ["Regional Officer", "Bureau Officer"],
+          "sla_days": 5,
+          "next_stage": "EVC Inspection",
+          "can_revert_to": "Re-Scrutiny",
+          "description": "Awaiting allocation of inspection dates and expert committee members",
+          "template": "EVC inspection scheduled for application {application_no}."
+        },
+        "EVC Inspection": {
+          "allowed_roles": ["Committee Member", "Regional Officer"],
+          "sla_days": 10,
+          "next_stage": "Regional Committee Review",
+          "can_revert_to": "Re-Scrutiny",
+          "description": "On-site / Virtual verification of infrastructure, faculty, and labs by EVC experts",
+          "template": "EVC report submitted for application {application_no}. Forwarded to Regional Committee Review."
+        },
+        "Regional Committee Review": {
+          "allowed_roles": ["Regional Officer", "Bureau Officer"],
+          "sla_days": 7,
+          "next_stage": "Final Approval",
+          "can_revert_to": "Re-Scrutiny",
+          "description": "Assessment of EVC recommendations by Regional Committee",
+          "template": "Regional Committee accepted EVC findings for application {application_no} and recommended for Final Approval."
+        },
+        "Final Approval": {
+          "allowed_roles": ["Bureau Officer", "Admin"],
+          "sla_days": 5,
+          "next_stage": null,
+          "can_revert_to": "Re-Scrutiny",
+          "description": "Competent Authority review and final LoA / extension issuance",
+          "template": "Statutory approval approved by Competent Authority for application {application_no}."
+        }
+      }
+    },
+    "EVC+SAC/SHC": {
+      "description": "Escalated or special cases requiring EVC followed by Standing Appellate / Hearing Committee (SAC/SHC)",
+      "initial_stage": "EVC Queue",
+      "stages": {
+        "EVC Queue": {
+          "allowed_roles": ["Regional Officer", "Bureau Officer"],
+          "sla_days": 5,
+          "next_stage": "EVC Inspection",
+          "can_revert_to": "Re-Scrutiny",
+          "description": "Queueing for special or compliance-related EVC inspection",
+          "template": "Application {application_no} queued for inspection under SAC/SHC route."
+        },
+        "EVC Inspection": {
+          "allowed_roles": ["Committee Member", "Regional Officer"],
+          "sla_days": 10,
+          "next_stage": "SAC/SHC Review",
+          "can_revert_to": "Re-Scrutiny",
+          "description": "Physical inspection and deficiency assessment by EVC",
+          "template": "EVC inspection report submitted for application {application_no}. Forwarded to SAC/SHC."
+        },
+        "SAC/SHC Review": {
+          "allowed_roles": ["Bureau Officer", "Committee Member"],
+          "sla_days": 7,
+          "next_stage": "Final Approval",
+          "can_revert_to": "Re-Scrutiny",
+          "description": "Appellate hearing before Standing Appellate / Hearing Committee",
+          "template": "Standing Appellate Committee hearing completed for {application_no}."
+        },
+        "Re-Scrutiny": {
+          "allowed_roles": ["Regional Officer"],
+          "sla_days": 5,
+          "next_stage": "SAC/SHC Review",
+          "can_revert_to": null,
+          "description": "Re-scrutiny of documents following SAC/SHC hearing directives",
+          "template": "Re-scrutiny completed under SAC directives for application {application_no}."
+        },
+        "Final Approval": {
+          "allowed_roles": ["Bureau Officer", "Admin"],
+          "sla_days": 5,
+          "next_stage": null,
+          "can_revert_to": "Re-Scrutiny",
+          "description": "Apex decision by Member Secretary / Chairman AICTE",
+          "template": "Final appellate decision ratified for application {application_no}."
+        }
+      }
+    },
+    "Only EVC": {
+      "description": "Direct inspection route for surprise checks, complaints, or specific infrastructure verifications",
+      "initial_stage": "EVC Queue",
+      "stages": {
+        "EVC Queue": {
+          "allowed_roles": ["Regional Officer", "Bureau Officer"],
+          "sla_days": 5,
+          "next_stage": "EVC Inspection",
+          "can_revert_to": "Re-Scrutiny",
+          "description": "Direct queuing for EVC inspection",
+          "template": "Direct EVC inspection queued for application {application_no}."
+        },
+        "EVC Inspection": {
+          "allowed_roles": ["Committee Member", "Regional Officer"],
+          "sla_days": 10,
+          "next_stage": "Final Approval",
+          "can_revert_to": "Re-Scrutiny",
+          "description": "Execution of inspection by expert committee",
+          "template": "EVC inspection completed for application {application_no}. Forwarded for final disposition."
+        },
+        "Re-Scrutiny": {
+          "allowed_roles": ["Regional Officer"],
+          "sla_days": 5,
+          "next_stage": "EVC Inspection",
+          "can_revert_to": null,
+          "description": "Re-scrutiny of compliance documents submitted post-inspection",
+          "template": "Re-scrutiny completed for application {application_no}."
+        },
+        "Final Approval": {
+          "allowed_roles": ["Bureau Officer", "Admin"],
+          "sla_days": 5,
+          "next_stage": null,
+          "can_revert_to": "Re-Scrutiny",
+          "description": "Final officer order based directly on EVC findings",
+          "template": "Direct EVC based approval order finalized for application {application_no}."
+        }
+      }
+    }
+  }
+}

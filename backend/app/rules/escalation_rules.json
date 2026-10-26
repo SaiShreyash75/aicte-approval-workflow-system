@@ -1,0 +1,193 @@
+{
+  "rules": [
+    {
+      "rule_code": "STAGE_SLA_APPROACHING",
+      "trigger_type": "STAGE_SLA",
+      "days_offset": -2,
+      "recipient_role": "Regional Officer",
+      "escalation_level": 1,
+      "channel": "IN_APP",
+      "description": "Warning sent when application stage SLA has 2 days remaining"
+    },
+    {
+      "rule_code": "STAGE_SLA_OVERDUE_L2",
+      "trigger_type": "STAGE_SLA",
+      "days_offset": 0,
+      "recipient_role": "Regional Officer",
+      "escalation_level": 2,
+      "channel": "ALL",
+      "description": "Escalation to Regional Officer on the day application SLA breaches"
+    },
+    {
+      "rule_code": "STAGE_SLA_OVERDUE_L3",
+      "trigger_type": "STAGE_SLA",
+      "days_offset": 7,
+      "recipient_role": "Bureau Officer",
+      "escalation_level": 3,
+      "channel": "ALL",
+      "description": "Escalation to Bureau Officer when application is 7+ days past stage SLA"
+    },
+    {
+      "rule_code": "STAGE_SLA_OVERDUE_L4",
+      "trigger_type": "STAGE_SLA",
+      "days_offset": 15,
+      "recipient_role": "Admin",
+      "escalation_level": 4,
+      "channel": "ALL",
+      "description": "Apex escalation to Higher Authority (Member Secretary/Admin) when application is 15+ days past stage SLA"
+    },
+    {
+      "rule_code": "EVC_DUE_WARNING",
+      "trigger_type": "EVC_DUE",
+      "days_offset": -2,
+      "recipient_role": "Committee Member",
+      "escalation_level": 1,
+      "channel": "IN_APP",
+      "description": "Reminder sent 2 days before scheduled EVC inspection date"
+    },
+    {
+      "rule_code": "EVC_OVERDUE_L2",
+      "trigger_type": "EVC_OVERDUE",
+      "days_offset": 0,
+      "recipient_role": "Regional Officer",
+      "escalation_level": 2,
+      "channel": "ALL",
+      "description": "Escalation to Regional Officer when scheduled EVC date passes without completion"
+    },
+    {
+      "rule_code": "EVC_OVERDUE_L3",
+      "trigger_type": "EVC_OVERDUE",
+      "days_offset": 5,
+      "recipient_role": "Bureau Officer",
+      "escalation_level": 3,
+      "channel": "ALL",
+      "description": "Escalation to Bureau Officer when EVC inspection report is 5+ days delayed"
+    },
+    {
+      "rule_code": "UNDERTAKING_T_30",
+      "trigger_type": "UNDERTAKING_DEADLINE",
+      "days_offset": -30,
+      "recipient_role": "Institution",
+      "escalation_level": 1,
+      "channel": "IN_APP",
+      "description": "Advance reminder 30 days before undertaking due date"
+    },
+    {
+      "rule_code": "UNDERTAKING_T_15",
+      "trigger_type": "UNDERTAKING_DEADLINE",
+      "days_offset": -15,
+      "recipient_role": "Institution",
+      "escalation_level": 1,
+      "channel": "IN_APP",
+      "description": "Reminder 15 days before undertaking due date"
+    },
+    {
+      "rule_code": "UNDERTAKING_T_7",
+      "trigger_type": "UNDERTAKING_DEADLINE",
+      "days_offset": -7,
+      "recipient_role": "Institution",
+      "escalation_level": 1,
+      "channel": "IN_APP",
+      "description": "Urgent reminder 7 days before undertaking due date"
+    },
+    {
+      "rule_code": "UNDERTAKING_T_1",
+      "trigger_type": "UNDERTAKING_DEADLINE",
+      "days_offset": -1,
+      "recipient_role": "Institution",
+      "escalation_level": 1,
+      "channel": "ALL",
+      "description": "Final 24-hour reminder before undertaking deadline"
+    },
+    {
+      "rule_code": "UNDERTAKING_OVERDUE_L2",
+      "trigger_type": "UNDERTAKING_DEADLINE",
+      "days_offset": 0,
+      "recipient_role": "Regional Officer",
+      "escalation_level": 2,
+      "channel": "ALL",
+      "description": "Escalation to Regional Officer immediately upon undertaking deadline breach"
+    },
+    {
+      "rule_code": "UNDERTAKING_OVERDUE_L3",
+      "trigger_type": "UNDERTAKING_DEADLINE",
+      "days_offset": 7,
+      "recipient_role": "Bureau Officer",
+      "escalation_level": 3,
+      "channel": "ALL",
+      "description": "Escalation to Bureau Officer when undertaking is 7+ days overdue"
+    },
+    {
+      "rule_code": "UNDERTAKING_OVERDUE_L4",
+      "trigger_type": "UNDERTAKING_DEADLINE",
+      "days_offset": 15,
+      "recipient_role": "Admin",
+      "escalation_level": 4,
+      "channel": "ALL",
+      "description": "Apex escalation to Higher Authority when undertaking is 15+ days overdue"
+    },
+    {
+      "rule_code": "DOCUMENT_EXPIRY_T_30",
+      "trigger_type": "DOCUMENT_EXPIRY",
+      "days_offset": -30,
+      "recipient_role": "Institution",
+      "escalation_level": 1,
+      "channel": "IN_APP",
+      "description": "Advance alert 30 days before statutory lease/document expiry"
+    },
+    {
+      "rule_code": "DOCUMENT_EXPIRY_T_15",
+      "trigger_type": "DOCUMENT_EXPIRY",
+      "days_offset": -15,
+      "recipient_role": "Institution",
+      "escalation_level": 1,
+      "channel": "IN_APP",
+      "description": "Renewal reminder 15 days before document expiry"
+    },
+    {
+      "rule_code": "DOCUMENT_EXPIRY_T_7",
+      "trigger_type": "DOCUMENT_EXPIRY",
+      "days_offset": -7,
+      "recipient_role": "Institution",
+      "escalation_level": 1,
+      "channel": "IN_APP",
+      "description": "Urgent renewal warning 7 days before document expiry"
+    },
+    {
+      "rule_code": "DOCUMENT_EXPIRY_T_1",
+      "trigger_type": "DOCUMENT_EXPIRY",
+      "days_offset": -1,
+      "recipient_role": "Institution",
+      "escalation_level": 1,
+      "channel": "ALL",
+      "description": "Final 24-hour warning before document expiry"
+    },
+    {
+      "rule_code": "DOCUMENT_EXPIRED_L2",
+      "trigger_type": "DOCUMENT_EXPIRY",
+      "days_offset": 0,
+      "recipient_role": "Regional Officer",
+      "escalation_level": 2,
+      "channel": "ALL",
+      "description": "Escalation to Regional Officer when statutory document expires without renewal"
+    },
+    {
+      "rule_code": "DOCUMENT_EXPIRED_L3",
+      "trigger_type": "DOCUMENT_EXPIRY",
+      "days_offset": 7,
+      "recipient_role": "Bureau Officer",
+      "escalation_level": 3,
+      "channel": "ALL",
+      "description": "Escalation to Bureau Officer when document remains expired for 7+ days"
+    },
+    {
+      "rule_code": "DOCUMENT_EXPIRED_L4",
+      "trigger_type": "DOCUMENT_EXPIRY",
+      "days_offset": 15,
+      "recipient_role": "Admin",
+      "escalation_level": 4,
+      "channel": "ALL",
+      "description": "Apex escalation to Higher Authority for expired statutory certificate > 15 days"
+    }
+  ]
+}
