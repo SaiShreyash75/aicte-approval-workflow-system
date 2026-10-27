@@ -13,6 +13,7 @@ import EVCScheduling from './pages/EVCScheduling';
 import Compliance from './pages/Compliance';
 import Reports from './pages/Reports';
 import AuditTrail from './pages/AuditTrail';
+import Notifications from './pages/Notifications';
 
 function ProtectedLayout() {
   const { user } = useAuth();
@@ -54,6 +55,7 @@ export default function App() {
             <Route path="/applications/:id" element={<ApplicationDetail />} />
             <Route path="/evc" element={<EVCScheduling />} />
             <Route path="/compliance" element={<Compliance />} />
+            <Route path="/notifications" element={<Notifications />} />
             <Route path="/reports" element={<Reports />} />
             <Route path="/audit" element={<AuditTrail />} />
             <Route path="*" element={<Navigate to="/dashboard" replace />} />

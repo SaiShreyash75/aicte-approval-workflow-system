@@ -5,6 +5,7 @@ import {
   FileText,
   CalendarCheck2,
   ShieldAlert,
+  Bell,
   BarChart3,
   History,
   Building2,
@@ -21,6 +22,7 @@ export default function Sidebar() {
     { to: '/applications', label: 'Applications', icon: FileText, roles: ['Admin', 'Regional Officer', 'Bureau Officer', 'Committee Member', 'Institution'] },
     { to: '/evc', label: 'EVC Inspections', icon: CalendarCheck2, roles: ['Admin', 'Regional Officer', 'Bureau Officer', 'Committee Member'] },
     { to: '/compliance', label: 'Compliance & Documents', icon: ShieldAlert, roles: ['Admin', 'Regional Officer', 'Bureau Officer', 'Institution'] },
+    { to: '/notifications', label: 'Notifications & Alerts', icon: Bell, roles: ['Admin', 'Regional Officer', 'Bureau Officer', 'Committee Member', 'Institution'] },
     { to: '/reports', label: 'Reports & Exports', icon: BarChart3, roles: ['Admin', 'Regional Officer', 'Bureau Officer'] },
     { to: '/audit', label: 'Immutable Audit Trail', icon: History, roles: ['Admin', 'Regional Officer', 'Bureau Officer'] },
   ];
