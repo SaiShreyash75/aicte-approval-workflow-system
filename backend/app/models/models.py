@@ -105,6 +105,7 @@ class EVC(Base):
 
     id = Column(Integer, primary_key=True, index=True)
     application_id = Column(Integer, ForeignKey("applications.id"), unique=True, nullable=False)
+    assigned_user_id = Column(Integer, ForeignKey("users.id"), nullable=True)
     scheduled_date = Column(DateTime, nullable=True)
     committee_members = Column(Text, nullable=True)  # JSON or comma-separated list
     status = Column(String(50), default="QUEUED")  # QUEUED, SCHEDULED, IN_PROGRESS, COMPLETED, CANCELLED
@@ -114,6 +115,7 @@ class EVC(Base):
     created_at = Column(DateTime, default=utc_now)
 
     application = relationship("Application", back_populates="evc")
+    assigned_user = relationship("User", foreign_keys=[assigned_user_id])
 
 class Undertaking(Base):
     __tablename__ = "undertakings"
