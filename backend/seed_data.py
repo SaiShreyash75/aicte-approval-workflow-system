@@ -132,6 +132,10 @@ def seed_full():
         }
         bo_user = users_to_create[5]
         cm_user1 = users_to_create[7]
+        # Committee Member users (indices 7, 8, 9 in users_to_create)
+        cm_users = [users_to_create[7], users_to_create[8], users_to_create[9]]
+        # Committee Member users (indices 7, 8, 9 in users_to_create)
+        cm_users = [users_to_create[7], users_to_create[8], users_to_create[9]]
 
         # 6. Escalation rules sync
         sync_escalation_rules_to_db(db)
@@ -299,11 +303,13 @@ def seed_full():
             ("AICTE/2026/140", "COMPLETED", now - timedelta(days=18), "Prof. Meenakshi Sundaram, Dr. A. Sengupta", "RECOMMENDED", "All AICTE Approval Process Handbook (APH) infrastructure and land norms fully met."),
         ]
 
-        for app_no, status_evc, sched_dt, comm, reco, summ in evc_specs:
+        for evc_idx, (app_no, status_evc, sched_dt, comm, reco, summ) in enumerate(evc_specs):
             app_obj = apps_dict[app_no]
             comp_dt = (now - timedelta(days=2)) if status_evc == "COMPLETED" else None
+            assigned_cm = cm_users[evc_idx % len(cm_users)]
             evc_rec = EVC(
                 application_id=app_obj.id,
+                assigned_user_id=assigned_cm.id,
                 scheduled_date=sched_dt,
                 committee_members=comm,
                 status=status_evc,
