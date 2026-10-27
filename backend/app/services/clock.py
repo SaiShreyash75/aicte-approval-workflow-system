@@ -19,9 +19,13 @@ def get_system_clock_record(db: Session) -> SystemClock:
 def get_system_time(db: Session) -> datetime:
     """
     Returns the active system time.
+    When is_simulated is False, always returns the real current UTC time.
+    When is_simulated is True, returns the frozen simulated_date.
     All business logic, SLA deadline calculation, and escalation scans must use this.
     """
     clock = get_system_clock_record(db)
+    if not clock.is_simulated:
+        return datetime.now(timezone.utc)
     dt = clock.simulated_date
     if dt.tzinfo is None:
         dt = dt.replace(tzinfo=timezone.utc)
