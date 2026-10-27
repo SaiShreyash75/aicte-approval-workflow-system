@@ -42,12 +42,8 @@ def get_applications(
             query = query.filter(Institution.region_id == current_user.region_id)
     elif current_user.role == "Committee Member":
         from app.models.models import EVC
-        cleaned_name = current_user.full_name.split('(')[0].strip()
-        name_parts = cleaned_name.split()
-        key_fragment = name_parts[-1] if len(name_parts) > 1 else cleaned_name
         query = query.join(EVC, Application.id == EVC.application_id).filter(
-            (EVC.committee_members.ilike(f"%{key_fragment}%")) |
-            (EVC.committee_members.ilike(f"%{current_user.email}%"))
+            EVC.assigned_user_id == current_user.id
         )
 
     if region_id and current_user.role in ("Bureau Officer", "Admin"):
