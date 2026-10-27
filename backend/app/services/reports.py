@@ -20,7 +20,7 @@ def get_ageing_bucket(days: int) -> str:
 
 def generate_pendency_data(db: Session) -> dict:
     sys_time = get_system_time(db)
-    apps = db.query(Application).filter(Application.status.in_(["IN_PROGRESS", "REVERTED"])).all()
+    apps = db.query(Application).all()
 
     by_stage = {}
     by_region = {}
